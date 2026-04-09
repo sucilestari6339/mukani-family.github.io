@@ -255,6 +255,42 @@
                 border-width: 5px;  
             }
         }
+        /* Info Card */
+        .info-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: inline-block;
+            text-align: left;
+            max-width: 550px;
+            width: 100%;
+        }
+
+        .info-card p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        .info-card a {
+            text-decoration: none;
+            color: #3498db;
+        }
+
+        footer {
+            padding: 50px 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+            text-align: center;
+            background: #fff;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .navbar { flex-direction: column; gap: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+        }
     </style>
 </head>
 <body>
