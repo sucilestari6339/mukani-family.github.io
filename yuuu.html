@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keluarga Besar Mukani & Sarwijah</title>
+    <style>
+        /* --- CSS STYLING --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigasi */
+        .navbar {
+            background-color: #2c3e50;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .navbar .logo {
+            color: #f1c40f;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-links button {
+            background: transparent;
+            border: 1px solid #3498db;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-links button.active, .nav-links button:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        /* Konten */
+        .content-section {
+            display: none; /* Sembunyikan semua section */
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active { display: block; } /* Tampilkan yang aktif */
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Bagan Silsilah */
+        .tree-scroll { overflow-x: auto; padding: 40px 0; }
+        .tree { display: inline-block; min-width: 1000px; }
+        .tree ul { padding-top: 20px; position: relative; display: flex; justify-content: center; }
+        .tree li { text-align: center; list-style-type: none; position: relative; padding: 20px 5px 0 5px; }
+        .tree li::before, .tree li::after { content: ''; position: absolute; top: 0; right: 50%; border-top: 2px solid #ccc; width: 50%; height: 20px; }
+        .tree li::after { right: auto; left: 50%; border-left: 2px solid #ccc; }
+        .tree li:only-child::after, .tree li:only-child::before { display: none; }
+        .tree li:only-child { padding-top: 0; }
+        .tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
+        .tree li:last-child::before { border-right: 2px solid #ccc; border-radius: 0 5px 0 0; }
+        .tree li:first-child::after { border-radius: 5px 0 0 0; }
+        .tree ul ul::before { content: ''; position: absolute; top: 0; left: 50%; border-left: 2px solid #ccc; width: 0; height: 20px; }
+        .tree li a { border: 2px solid #ccc; padding: 15px; text-decoration: none; color: #333; background: white; border-radius: 10px; display: inline-block; transition: 0.3s; }
+        .tree li a.pancer { background: #2c3e50; color: white; border-color: #1a252f; font-size: 1.1em; }
+        .tree li a:hover { background: #3498db; color: white; transform: scale(1.05); }
+
+        /* Galeri & Kontak */
+        .gallery-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+        .photo-box { width: 250px; height: 180px; background: #ddd; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #666; font-weight: bold; }
+        .info-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: inline-block; text-align: left; }
+
+        footer { padding: 40px; color: #7f8c8d; font-size: 14px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">MUKANI & SARWIJAH</div>
+        <div class="nav-links">
+            <button onclick="nav('beranda')" id="btn-beranda" class="active">Beranda</button>
+            <button onclick="nav('silsilah')" id="btn-silsilah">Silsilah</button>
+            <button onclick="nav('galeri')" id="btn-galeri">Galeri</button>
+            <button onclick="nav('agenda')" id="btn-agenda">Agenda</button>
+            <button onclick="nav('kontak')" id="btn-kontak">Kontak</button>
+        </div>
+    </nav>
+
+    <div id="beranda" class="content-section active">
+        <h1>Selamat Datang di Website Keluarga</h1>
+        <p>Menjaga silaturahmi, mempererat tali persaudaraan keturunan <strong>Mukani & Sarwijah</strong>.</p>
+        <div style="margin-top: 30px; font-size: 50px;">🏠</div>
+    </div>
+
+    <div id="silsilah" class="content-section">
+        <h2>Bagan Silsilah Keluarga</h2>
+        <div class="tree-scroll">
+            <div class="tree">
+                <ul>
+                    <li>
+                        <a href="#" class="pancer">
+                            <strong>MUKANI & SARWIJAH</strong><br>
+                            <small>Pancer / Orang Tua</small>
+                        </a>
+                        <ul>
+                            <li><a href="#"><b>Anak 1</b><br><small>Nama Anak 1</small></a></li>
+                            <li><a href="#"><b>Anak 2</b><br><small>Nama Anak 2</small></a></li>
+                            <li><a href="#"><b>Anak 3</b><br><small>Nama Anak 3</small></a></li>
+                            <li><a href="#"><b>Anak 4</b><br><small>Nama Anak 4</small></a></li>
+                            <li><a href="#"><b>Anak 5</b><br><small>Nama Anak 5</small></a></li>
+                            <li><a href="#"><b>Anak 6</b><br><small>Nama Anak 6</small></a></li>
+                            <li><a href="#"><b>Anak 7</b><br><small>Nama Anak 7</small></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="galeri" class="content-section">
+        <h2>Galeri Kenangan</h2>
+        <p>Halaman ini untuk menampilkan foto-foto kegiatan keluarga besar.</p>
+        <div class="gallery-grid">
+            <div class="photo-box">Foto 1</div>
+            <div class="photo-box">Foto 2</div>
+            <div class="photo-box">Foto 3</div>
+        </div>
+    </div>
+
+    <div id="agenda" class="content-section">
+        <h2>Agenda Keluarga</h2>
+        <div class="info-card">
+            <p>📅 <strong>Jadwal Halal Bihalal:</strong> Setiap Tanggal 3 Syawal.</p>
+            <p>🤝 <strong>Pertemuan Rutin:</strong> Halal Bihalal tahunan.</p>
+        </div>
+    </div>
+
+    <div id="kontak" class="content-section">
+        <h2>Kontak Keluarga</h2>
+        <div class="info-card">
+            <p>📞 <strong>Admin Keluarga:</strong> 0812-xxxx-xxxx</p>
+            <p>📍 <strong>Pusat Informasi:</strong> Grup WhatsApp Keluarga Besar</p>
+        </div>
+    </div>
+
+    <footer>
+        © 2024 Keluarga Besar Mukani & Sarwijah. Dibuat dengan penuh kasih.
+    </footer>
+
+    <script>
+        function nav(id) {
+            // Sembunyikan semua
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+            
+            // Tampilkan yang diklik
+            document.getElementById(id).classList.add('active');
+            document.getElementById('btn-' + id).classList.add('active');
+            
+            // Scroll ke atas otomatis
+            window.scrollTo(0,0);
+        }
+    </script>
+
+</body>
+</html>
