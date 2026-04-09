@@ -87,19 +87,19 @@
         }
 
         .main-logo {
-            max-width: 100%; /* Agar gambar tidak melebihi lebar layar HP */
-            width: auto;     /* Mempertahankan rasio aspek asli */
-            max-height: 500px; /* Membatasi tinggi agar tidak terlalu panjang di laptop */
-            height: auto;    /* Mempertahankan rasio aspek asli */
-            object-fit: contain; /* Memastikan seluruh gambar terlihat tanpa terpotong */
-            border-radius: 0; /* Menghapus bentuk bulat */
+            max-width: 100%; 
+            width: auto;     
+            max-height: 500px; 
+            height: auto;    
+            object-fit: contain; 
+            border-radius: 0; 
             border: 10px solid white;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             transition: 0.3s;
         }
 
         .main-logo:hover {
-            transform: scale(1.02); /* Sedikit membesar saat hover */
+            transform: scale(1.02); 
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
@@ -179,27 +179,42 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* Galeri */
+        /* --- BAGIAN GALERI BARU --- */
         .gallery-grid {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            flex-wrap: wrap;
             margin-top: 30px;
+            padding: 10px;
         }
 
-        .photo-box {
-            width: 280px;
-            height: 200px;
-            background: #ddd;
+        .gallery-item {
+            background: white;
             border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-weight: bold;
+            overflow: hidden;
             border: 2px solid #fff;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* Foto tetap proporsional */
+            display: block;
+        }
+
+        .gallery-item .caption {
+            padding: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+            background: #fff;
         }
 
         /* Info Card (Agenda & Kontak) */
@@ -236,8 +251,8 @@
             .nav-links button { padding: 5px 10px; font-size: 12px; }
             
             .main-logo {
-                max-height: 300px; /* Membatasi tinggi di layar HP agar tidak terlalu dominan */
-                border-width: 5px;  /* Mengecilkan border di HP */
+                max-height: 300px; 
+                border-width: 5px;  
             }
         }
     </style>
@@ -294,12 +309,21 @@
         <h2>Galeri Kenangan</h2>
         <p>Kumpulan momen indah keluarga besar Mukani & Sarwijah.</p>
         <div class="gallery-grid">
-            <div class="photo-box">Foto Kegiatan 1.webp</div>
-            <div class="photo-box">Foto Kegiatan 2.webp</div>
-            <div class="photo-box">Foto Kegiatan 3</div>
-            <div id="galeri" class="content-section">
-        </div>
-    </div>
+            
+            <div class="gallery-item">
+                <img src="Foto Kegiatan 1.webp" alt="Kegiatan 1" onerror="this.src='https://via.placeholder.com/300x200?text=Foto+1'">
+                <div class="caption">Kegiatan Keluarga 1</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Foto Kegiatan 2.webp" alt="Kegiatan 2" onerror="this.src='https://via.placeholder.com/300x200?text=Foto+2'">
+                <div class="caption">Kegiatan Keluarga 2</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Foto Kegiatan 3.webp" alt="Kegiatan 3" onerror="this.src='https://via.placeholder.com/300x200?text=Foto+3'">
+                <div class="caption">Kegiatan Keluarga 3</div>
+            </div>
 
         </div>
     </div>
@@ -328,21 +352,15 @@
 
     <script>
         function nav(id) {
-            // Sembunyikan semua section
             const sections = document.querySelectorAll('.content-section');
             sections.forEach(s => s.classList.remove('active'));
             
-            // Matikan semua tombol aktif
             const buttons = document.querySelectorAll('.nav-links button');
             buttons.forEach(b => b.classList.remove('active'));
             
-            // Tampilkan section yang dipilih
             document.getElementById(id).classList.add('active');
-            
-            // Aktifkan tombol yang diklik
             document.getElementById('btn-' + id).classList.add('active');
             
-            // Scroll ke atas otomatis setiap pindah menu
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
     </script>
